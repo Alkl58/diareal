@@ -1,23 +1,47 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { Feather, Ionicons } from "@expo/vector-icons";
+import React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function ProfileScreen() {
   return (
     <View style={styles.container}>
+      {/* Back Button */}
+      <TouchableOpacity style={styles.backButton}>
+        <Ionicons name="arrow-back" size={28} color="#6A4FB6" />
+      </TouchableOpacity>
+
+      {/* Settings Button */}
+      <TouchableOpacity style={styles.settingsButton}>
+        <Feather name="settings" size={18} color="#fff" />
+        <Text style={styles.settingsText}>Settings</Text>
+      </TouchableOpacity>
+
+      {/* Avatar */}
+      <View style={styles.avatarCircle}>
+        <Ionicons name="person" size={70} color="#6A4FB6" />
+      </View>
+
+      <Text style={styles.username}>Username</Text>
+
+      {/* QR Code */}
       <Image
-        source={{ uri: "https://i.pravatar.cc/200" }}
-        style={styles.avatar}
+        source={{
+          uri: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Placeholder",
+        }}
+        style={styles.qr}
       />
 
-      <Text style={styles.name}>John Doe</Text>
-      <Text style={styles.email}>john.doe@example.com</Text>
+      {/* Friends Button */}
+      <View style={styles.friendsRow}>
+        <TouchableOpacity style={styles.friendsButton}>
+          <Text style={styles.friendsText}>Freunde</Text>
+        </TouchableOpacity>
 
-      <View style={styles.section}>
-        <Text style={styles.label}>About Me</Text>
-        <Text style={styles.text}>
-          This is a simple prototype profile. No backend, no authentication —
-          just static display content.
-        </Text>
+        <TouchableOpacity style={styles.plusCircle}>
+          <Ionicons name="add" size={28} color="#fff" />
+        </TouchableOpacity>
       </View>
+
     </View>
   );
 }
@@ -25,38 +49,96 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#FFFFFF",
     alignItems: "center",
-    paddingTop: 60,
-    paddingHorizontal: 20,
-    backgroundColor: "#fff",
+    paddingTop: 80,
   },
-  avatar: {
+
+  backButton: {
+    position: "absolute",
+    top: 60,
+    left: 20,
+    backgroundColor: "#EDE0FF",
+    padding: 6,
+    height: 44,
+    borderRadius: 50,
+  },
+
+  settingsButton: {
+    position: "absolute",
+    top: 60,
+    right: 20,
+    backgroundColor: "#6A4FB6",
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    height: 44,
+    borderRadius: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+  },
+
+  settingsText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+
+  avatarCircle: {
     width: 120,
     height: 120,
-    borderRadius: 60,
-    marginBottom: 20,
-  },
-  name: {
-    fontSize: 28,
-    fontWeight: "bold",
-  },
-  email: {
-    fontSize: 16,
-    color: "gray",
-    marginBottom: 30,
-  },
-  section: {
-    width: "100%",
+    borderRadius: 120,
+    backgroundColor: "#EDE0FF",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 20,
   },
-  label: {
-    fontSize: 18,
+
+  username: {
+    marginTop: 20,
+    fontSize: 24,
     fontWeight: "600",
-    marginBottom: 8,
   },
-  text: {
-    fontSize: 14,
-    lineHeight: 20,
-    color: "#444",
+
+  qr: {
+    marginTop: 30,
+    width: 220,
+    height: 220,
+  },
+
+  friendsButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F8F0FF",
+    paddingVertical: 15,
+    paddingHorizontal: 80,
+    borderRadius: 10,
+  },
+
+  friendsRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 40,
+    gap: 15,
+  },
+
+  friendsText: {
+    fontSize: 20,
+    textAlign: "center",
+  },
+
+  plusCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    backgroundColor: "#6A4FB6",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  friendsDiv: {
+    flexDirection: "column",
+    alignItems: "center",
+    paddingVertical: 15,
+    marginTop: 40,
   },
 });
