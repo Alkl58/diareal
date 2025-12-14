@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import {
   StyleSheet,
+  Switch,
   Text,
   TouchableOpacity,
   View
@@ -48,6 +49,7 @@ function SettingRow({ label }: { label: string }) {
   return (
     <View style={styles.row}>
       <Text style={styles.rowText}>{label}</Text>
+      <Switch value={true} />
     </View>
   );
 }
