@@ -2,27 +2,23 @@ import { View, StyleSheet, Text, TextInput, Pressable } from "react-native";
 import { Image } from "expo-image";
 
 import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 
 const PlaceholderImage = require('@/assets/images/icon.png');
 
 export default function Login() {
     return (
         <View style={styles.container}>
-            <View style={styles.headerContainer}>
+            <View style={styles.upperContainer}>
                 <Image source={PlaceholderImage} style={styles.image}/>
             </View>
-            <View style={styles.footerContainer}>
+            <View style={styles.inputContainer}>
                 <Input label="E-Mail"></Input>
 
                 <Input label="Password" theme="password"></Input>
 
-                <View style={[styles.buttonContainer, {borderWidth: 1, borderColor: 'black'}]}>
-                    <Pressable style={styles.button} onPress={()=>alert('You pressed login.')}>
-                        <Text style={styles.buttonLabel}>Login</Text>
-                    </Pressable>
-                </View>
+                <Button label="Login"/>
             </View>
-            
         </View>
     );
 }
@@ -39,12 +35,13 @@ const styles = StyleSheet.create({
         height: 200,
     },
 
-    headerContainer: {
+    upperContainer: {
         flex: 1/3,
         justifyContent: 'center',
         alignContent: 'center',
     },
-    footerContainer: {
+
+    inputContainer: {
         flex: 2/3,
         alignItems: 'center',
     },

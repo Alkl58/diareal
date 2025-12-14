@@ -14,13 +14,13 @@ export default function Input({ label, theme }: Probs) {
                 </View>
                 <View style={styles.textInputContainer}>
                     <TextInput style={styles.textInput}
-                    placeholder="Enter your password"
-                    secureTextEntry={true}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    textContentType="password" />
+                        placeholder="Enter your password"
+                        secureTextEntry={true}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        textContentType="password" />
                 </View>
-                
+
             </View>
         )
     }
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         width: 320,
         height: 100,
         marginHorizontal: 20,
+        marginVertical: 10,
         alignContent: 'center',
         justifyContent: 'center',
         padding: 3,
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     },
 
     textLabelContainer: {
-        flex: 1/3,
+        flex: 1 / 3,
     },
 
     textLabel: {
