@@ -45,7 +45,10 @@ export default function ProfileScreen() {
 
       {/* Friends */}
       <View style={styles.friendsRow}>
-        <TouchableOpacity style={styles.friendsButton}>
+        <TouchableOpacity 
+          style={styles.friendsButton}
+          onPress={() => router.push("/friends")}
+        >
           <Text style={styles.friendsText}>Freunde</Text>
         </TouchableOpacity>
 
