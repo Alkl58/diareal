@@ -2,17 +2,19 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
 import {
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 type Friend = {
   id: string;
   name: string;
   email: string;
+  latestImage?: string;
 };
 
 const FRIENDS: Friend[] = [
@@ -20,16 +22,19 @@ const FRIENDS: Friend[] = [
     id: "1",
     name: "Kevin Kunze",
     email: "kevin.kunze@example.com",
+    latestImage: "https://picsum.photos/seed/kevin/200/200",
   },
   {
     id: "2",
     name: "Anna Kunze",
     email: "anna.kunze@example.com",
+    latestImage: "https://picsum.photos/seed/anna/200/200",
   },
   {
     id: "3",
     name: "Siggi",
     email: "sigmar@example.com",
+    latestImage: "https://picsum.photos/seed/siggi/200/200",
   },
 ];
 
@@ -38,20 +43,34 @@ export default function FriendsScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Back Button */}
-      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        <Ionicons name="arrow-back" size={28} color="#6A4FB6" />
-      </TouchableOpacity>
+      {/* Top Bar */}
+      <View style={styles.topBar}>
+        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={24} color="#6A4FB6" />
+        </TouchableOpacity>
+        
+        <View style={styles.splitButton}>
+          <TouchableOpacity style={styles.splitButtonLeft}>
+            <Ionicons name="search" size={18} color="#fff" />
+            <Text style={styles.splitButtonText}>Suche</Text>
+          </TouchableOpacity>
+          
+          <View style={styles.splitButtonDivider} />
+          
+          <TouchableOpacity style={styles.splitButtonRight}>
+            <Ionicons name="chevron-down" size={18} color="#fff" />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Profile Circle */}
+      <View style={styles.profileCircle}>
+        <Ionicons name="person" size={40} color="#6A4FB6" />
+      </View>
 
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Freunde</Text>
-      </View>
-
-      {/* Search Placeholder */}
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={18} color="#777" />
-        <Text style={styles.searchText}>Suche</Text>
       </View>
 
       {/* Friends List */}
@@ -61,24 +80,28 @@ export default function FriendsScreen() {
         contentContainerStyle={{ paddingTop: 10 }}
         renderItem={({ item }) => (
           <View style={styles.friendCard}>
-            {/* Avatar */}
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>
-                {item.name.charAt(0)}
-              </Text>
+            <View style={styles.friendCardContent}>
+              {/* Avatar */}
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>
+                  {item.name.charAt(0)}
+                </Text>
+              </View>
+
+              {/* Info */}
+              <View style={styles.friendInfo}>
+                <Text style={styles.friendName}>{item.name}</Text>
+                <Text style={styles.friendMail}>{item.email}</Text>
+              </View>
             </View>
 
-            {/* Info */}
-            <View style={styles.friendInfo}>
-              <Text style={styles.friendName}>{item.name}</Text>
-              <Text style={styles.friendMail}>{item.email}</Text>
-            </View>
-
-            {/* Placeholder Icons */}
-            <View style={styles.actions}>
-              <Ionicons name="heart-outline" size={20} color="#bbb" />
-              <Ionicons name="settings-outline" size={20} color="#bbb" />
-            </View>
+            {/* Latest Image Thumbnail */}
+            {item.latestImage && (
+              <Image
+                source={{ uri: item.latestImage }}
+                style={styles.thumbnail}
+              />
+            )}
           </View>
         )}
       />
@@ -94,55 +117,90 @@ const styles = StyleSheet.create({
     paddingTop: 60,
   },
 
-  backButton: {
-    position: "absolute",
-    top: 60,
-    left: 20,
-    backgroundColor: "#EDE0FF",
-    padding: 6,
-    height: 44,
-    borderRadius: 50,
-  },
-
-  header: {
+  topBar: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 20,
-    marginTop: 60,
-    width: '100%',
-    
+  },
+
+  backButton: {
+    backgroundColor: "#EDE0FF",
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  splitButton: {
+    flexDirection: "row",
+    backgroundColor: "#6A4FB6",
+    height: 44,
+    borderRadius: 20,
+    overflow: "hidden",
+  },
+
+  splitButtonLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    gap: 6,
+  },
+
+  splitButtonDivider: {
+    width: 1,
+    backgroundColor: "rgba(255, 255, 255, 0.3)",
+    marginVertical: 8,
+  },
+
+  splitButtonRight: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 12,
+  },
+
+  splitButtonText: {
+    color: "#fff",
+    fontSize: 16,
+  },
+
+  profileCircle: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    backgroundColor: "#EDE0FF",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    marginBottom: 16,
+  },
+
+  header: {
+    marginBottom: 20,
   },
 
   title: {
     fontSize: 22,
     fontWeight: "600",
     textAlign: 'center',
-    width: '100%',
-  },
-
-  searchBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#F1F1F1",
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    gap: 8,
-  },
-
-  searchText: {
-    color: "#777",
-    fontSize: 16,
   },
 
   friendCard: {
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "stretch",
     backgroundColor: "#FAF7FF",
-    padding: 14,
     borderRadius: 14,
     marginBottom: 12,
+    overflow: "hidden",
+  },
+
+  friendCardContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+    padding: 14,
   },
 
   avatar: {
@@ -176,8 +234,8 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
 
-  actions: {
-    flexDirection: "row",
-    gap: 12,
+  thumbnail: {
+    width: 80,
+    alignSelf: "stretch",
   },
 });
