@@ -3,9 +3,10 @@ import { StyleSheet, View, Text, TextInput } from "react-native";
 type Probs = {
     label: string;
     theme?: 'password';
+    placeholderMessage?: string;
 }
 
-export default function Input({ label, theme }: Probs) {
+export default function Input({ label, theme, placeholderMessage }: Probs) {
     if (theme === 'password') {
         return (
             <View style={styles.container}>
@@ -31,7 +32,7 @@ export default function Input({ label, theme }: Probs) {
             </View>
             <View style={styles.textInputContainer}>
                 <TextInput style={styles.textInput}
-                    placeholder="Enter your text" />
+                    placeholder={placeholderMessage} />
             </View>
         </View>
     )
@@ -39,7 +40,7 @@ export default function Input({ label, theme }: Probs) {
 
 const styles = StyleSheet.create({
     container: {
-        width: 320,
+        width: 400,
         height: 100,
         marginHorizontal: 20,
         marginVertical: 10,

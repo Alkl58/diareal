@@ -1,10 +1,10 @@
 import { View, StyleSheet } from "react-native";
+import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import DualButton from "@/components/ui/DualButton";
-import { Image } from "expo-image";
 
 const PlaceholderImage = require('@/assets/images/icon.png');
 
@@ -14,24 +14,26 @@ export default function Login() {
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={PlaceholderImage}/>
+                <Image source={PlaceholderImage} style={styles.image} />
             </View>
 
             <View style={styles.upperContainer}>
-                <DualButton 
-                    leftLabel="Register" 
-                    rightLabel="Login" 
-                    onLeftPress={() => router.push("/register")} 
+                <DualButton
+                    leftLabel="Register"
+                    rightLabel="Login"
+                    onLeftPress={() => router.push("/register")}
                     onRightPress={() => router.push("/(tabs)/login")}
                 />
             </View>
 
             <View style={styles.inputContainer}>
-                <Input label="E-Mail" placeholderMessage="Enter your E-Mail"></Input>
+                <Input label="E-Mail" />
 
-                <Input label="Password" theme="password"></Input>
+                <Button label="Send code" onPress={() => alert('Sending code!')}/>
 
-                <Button label="Login" onPress={() => router.push("/")}/>
+                <Input label="Verification Code" />
+
+                <Button label="Continue" onPress={() => router.push("/")} />
             </View>
         </View>
     );
@@ -58,7 +60,6 @@ const styles = StyleSheet.create({
 
     upperContainer: {
         flex: 1,
-        width: 400,
         justifyContent: 'center',
         alignContent: 'center',
     },
@@ -66,5 +67,14 @@ const styles = StyleSheet.create({
     inputContainer: {
         flex: 4,
         alignItems: 'center',
+    },
+
+    textInput: {
+        width: 320,
+        height: 68,
+        borderColor: 'gray',
+        borderWidth: 1,
+        padding: 5,
+        fontSize: 24,
     },
 });

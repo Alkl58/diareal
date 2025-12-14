@@ -8,7 +8,7 @@ type Probs = {
 export default function Button({label, onPress}: Probs) {
     return (
         <View style={styles.buttonContainer}>
-            <Pressable style={styles.button} onPress={() => alert('You pressed the button.')}>
+            <Pressable style={styles.button} onPress={onPress}>
                 <Text style={styles.buttonLabel}>{label}</Text>
             </Pressable>
         </View>
@@ -17,10 +17,11 @@ export default function Button({label, onPress}: Probs) {
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        width: 320, 
+        width: '100%', 
         height: 68,
         marginHorizontal: 20,
         marginVertical: 10,
+        marginBottom: 10,
         alignContent: 'center',
         justifyContent: 'center',
         padding: 3,
