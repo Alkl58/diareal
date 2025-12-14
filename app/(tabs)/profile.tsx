@@ -1,8 +1,17 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 export default function ProfileScreen() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       {/* Back Button */}
@@ -11,7 +20,10 @@ export default function ProfileScreen() {
       </TouchableOpacity>
 
       {/* Settings Button */}
-      <TouchableOpacity style={styles.settingsButton}>
+      <TouchableOpacity
+        style={styles.settingsButton}
+        onPress={() => router.push("/settings")}
+      >
         <Feather name="settings" size={18} color="#fff" />
         <Text style={styles.settingsText}>Settings</Text>
       </TouchableOpacity>
@@ -31,7 +43,7 @@ export default function ProfileScreen() {
         style={styles.qr}
       />
 
-      {/* Friends Button */}
+      {/* Friends */}
       <View style={styles.friendsRow}>
         <TouchableOpacity style={styles.friendsButton}>
           <Text style={styles.friendsText}>Freunde</Text>
@@ -41,17 +53,17 @@ export default function ProfileScreen() {
           <Ionicons name="add" size={28} color="#fff" />
         </TouchableOpacity>
       </View>
-
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
     alignItems: "center",
-    paddingTop: 80,
+    paddingTop: 60,
   },
 
   backButton: {
