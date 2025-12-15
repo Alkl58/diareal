@@ -52,7 +52,10 @@ export default function ProfileScreen() {
           <Text style={styles.friendsText}>Freunde</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.plusCircle}>
+        <TouchableOpacity 
+          style={styles.plusCircle}
+          onPress={() => router.push("/camera")}
+        >
           <Ionicons name="add" size={28} color="#fff" />
         </TouchableOpacity>
       </View>
