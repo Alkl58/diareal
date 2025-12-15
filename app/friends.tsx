@@ -46,7 +46,7 @@ export default function FriendsScreen() {
       {/* Top Bar */}
       <View style={styles.topBar}>
         <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-          <Ionicons name="arrow-back" size={24} color="#6A4FB6" />
+          <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         
         <View style={styles.splitButton}>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
   },
 
   backButton: {
-    backgroundColor: "#EDE0FF",
+    backgroundColor: "#6A4FB6",
     width: 44,
     height: 44,
     borderRadius: 22,

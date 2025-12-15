@@ -16,7 +16,7 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton}>
-        <Ionicons name="arrow-back" size={28} color="#6A4FB6" />
+        <Ionicons name="arrow-back" size={24} color="#fff" />
       </TouchableOpacity>
 
       {/* Settings Button */}
@@ -76,10 +76,12 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 60,
     left: 20,
-    backgroundColor: "#EDE0FF",
-    padding: 6,
+    backgroundColor: "#6A4FB6",
+    width: 44,
     height: 44,
-    borderRadius: 50,
+    borderRadius: 22,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   settingsButton: {
