@@ -15,7 +15,7 @@ const entries = [
     mood: "😊",
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
     visibility: "Privat",
-    image: "https://placehold.co/600x300",
+    image: "https://picsum.photos/600/300",
     taggedFriends: ['1'],
   },
   {
@@ -23,7 +23,7 @@ const entries = [
     mood: "😞",
     content: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
     visibility: "Öffentlich",
-    image: "https://placehold.co/600x300",
+    image: "https://picsum.photos/600/300",
     taggedFriends: ['1', '2', '3'],
   },
   {
@@ -31,7 +31,7 @@ const entries = [
     mood: "😄",
     content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     visibility: "Privat",
-    image: "https://placehold.co/600x300",
+    image: "https://picsum.photos/600/300",
     taggedFriends: ['1', '2'],
   },
 ];
