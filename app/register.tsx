@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 
@@ -6,26 +6,27 @@ import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import DualButton from "@/components/ui/DualButton";
 
-const PlaceholderImage = require('@/assets/images/icon.png');
+const PlaceholderImage = require('@/assets/images/AI-logo.png');
 
 export default function Login() {
     const router = useRouter();
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
 
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image source={PlaceholderImage} style={styles.image} />
+                <Image style={styles.image} source={PlaceholderImage} contentFit="contain"/>
             </View>
 
             <View style={styles.upperContainer}>
-                <View style={styles.upperContainer}>
-                    <DualButton
-                        leftLabel="Register"
-                        rightLabel="Login"
-                        onLeftPress={() => router.push("/register")}
-                        onRightPress={() => router.push("/(tabs)/login")}
-                    />
-                </View>
+                <DualButton 
+                    leftLabel="Register" 
+                    rightLabel="Login" 
+                    active='left'
+                    onLeftPress={() => router.push("/register")} 
+                    onRightPress={() => router.push("/login")}
+                />
             </View>
 
             <View style={styles.inputContainer}>
@@ -33,7 +34,7 @@ export default function Login() {
 
                 <Input label="Password" theme="password" />
 
-                <Input label="PIN" placeholderMessage="Enter your PIN (optional)"/>
+                <Input label="PIN" placeholderMessage="Choose your PIN (optional)"/>
 
                 <Button label="Register" onPress={() => router.push("/")} />
             </View>
@@ -46,37 +47,32 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
+        justifyContent: 'flex-start',
+        paddingVertical: 20,
     },
-
     imageContainer: {
-        flex: 2,
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
+        maxHeight: 200,
     },
-
     image: {
+        width: '50%', // adapt to screen width
+        maxWidth: 200,
+        aspectRatio: 1, // maintain square
         borderRadius: 20,
-        width: 200,
-        height: 200,
     },
-
     upperContainer: {
-        flex: 1,
+        width: '90%',
+        maxWidth: 400, // optional: prevent stretching on desktop
         justifyContent: 'center',
-        alignContent: 'center',
-    },
+        alignItems: 'center',
+        marginVertical: 20, // spacing above/below
+},
 
     inputContainer: {
         flex: 4,
+        width: '90%',
         alignItems: 'center',
-    },
-
-    textInput: {
-        width: 320,
-        height: 68,
-        borderColor: 'gray',
-        borderWidth: 1,
-        padding: 5,
-        fontSize: 24,
     },
 });

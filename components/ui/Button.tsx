@@ -1,4 +1,5 @@
 import { StyleSheet, View, Pressable, Text } from "react-native";
+import { moderateScale } from "react-native-size-matters";
 
 type Probs = {
     label: string;
@@ -18,11 +19,12 @@ export default function Button({label, onPress}: Probs) {
 const styles = StyleSheet.create({
     buttonContainer: {
         width: '100%', 
+        maxWidth: 400,
         height: 68,
         marginHorizontal: 20,
         marginVertical: 10,
         marginBottom: 10,
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
         padding: 3,
     },
@@ -43,6 +45,6 @@ const styles = StyleSheet.create({
 
     buttonLabel: {
         color: 'black',
-        fontSize: 24,
+        fontSize: moderateScale(14),
     },
 });

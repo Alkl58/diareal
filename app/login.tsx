@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { useRouter } from "expo-router";
 
 import Input from "@/components/ui/Input";
@@ -6,23 +6,26 @@ import Button from "@/components/ui/Button";
 import DualButton from "@/components/ui/DualButton";
 import { Image } from "expo-image";
 
-const PlaceholderImage = require('@/assets/images/icon.png');
+const PlaceholderImage = require('@/assets/images/AI-logo.png');
 
 export default function Login() {
     const router = useRouter();
+    const { width, height } = useWindowDimensions();
+    const isLandscape = width > height;
 
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
-                <Image style={styles.image} source={PlaceholderImage}/>
+                <Image style={styles.image} source={PlaceholderImage} contentFit="contain"/>
             </View>
 
             <View style={styles.upperContainer}>
                 <DualButton 
                     leftLabel="Register" 
                     rightLabel="Login" 
+                    active='right'
                     onLeftPress={() => router.push("/register")} 
-                    onRightPress={() => router.push("/(tabs)/login")}
+                    onRightPress={() => router.push("/login")}
                 />
             </View>
 
@@ -42,29 +45,32 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         alignItems: 'center',
+        justifyContent: 'flex-start',
+        paddingVertical: 20,
     },
-
     imageContainer: {
-        flex: 2,
-        alignContent: 'center',
+        alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
+        maxHeight: 200,
     },
-
     image: {
+        width: '50%', // adapt to screen width
+        maxWidth: 200,
+        aspectRatio: 1, // maintain square
         borderRadius: 20,
-        width: 200,
-        height: 200,
     },
-
     upperContainer: {
-        flex: 1,
-        width: 400,
+        width: '90%',
+        maxWidth: 400, // optional: prevent stretching on desktop
         justifyContent: 'center',
-        alignContent: 'center',
-    },
+        alignItems: 'center',
+        marginVertical: 20, // spacing above/below
+},
 
     inputContainer: {
         flex: 4,
+        width: '90%',
         alignItems: 'center',
     },
 });

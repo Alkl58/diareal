@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, TextInput } from "react-native";
+import { moderateScale } from "react-native-size-matters";
 
 type Probs = {
     label: string;
@@ -21,7 +22,6 @@ export default function Input({ label, theme, placeholderMessage }: Probs) {
                         autoCorrect={false}
                         textContentType="password" />
                 </View>
-
             </View>
         )
     }
@@ -40,13 +40,13 @@ export default function Input({ label, theme, placeholderMessage }: Probs) {
 
 const styles = StyleSheet.create({
     container: {
-        width: 400,
+        width: '100%',
+        maxWidth: 400,
         height: 100,
         marginHorizontal: 20,
         marginVertical: 10,
         alignContent: 'center',
         justifyContent: 'center',
-        padding: 3,
     },
 
     textInputContainer: {
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: '100%',
         height: '100%',
-        fontSize: 24,
+        fontSize: moderateScale(14),
     },
 
     textLabelContainer: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
 
     textLabel: {
-        fontSize: 20,
+        fontSize: moderateScale(14),
         color: 'black',
     },
 });

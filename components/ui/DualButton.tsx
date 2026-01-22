@@ -1,58 +1,73 @@
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { View, Pressable, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { moderateScale } from "react-native-size-matters";
 
-type Probs = {
-    leftLabel: string;
-    rightLabel: string;
-    onLeftPress?: () => void;
-    onRightPress?: () => void;
+type Props = {
+  leftLabel: string;
+  rightLabel: string;
+  active: 'left' | 'right';
+  onLeftPress?: () => void;
+  onRightPress?: () => void;
 };
 
-export default function DualButton({leftLabel, rightLabel, onLeftPress, onRightPress}: Probs){
-    return (
-        <View style={styles.dualButtonContainer}>
-            <Pressable style={styles.leftButton} onPress={onLeftPress}>
-                <Text style={styles.buttonLabel}>{leftLabel}</Text>
-            </Pressable>
-            <Pressable style={styles.rightButton} onPress={onRightPress}>
-                <Text style={styles.buttonLabel}>{rightLabel}</Text>
-            </Pressable>
-        </View>
-    )
+export default function DualButton({ leftLabel, rightLabel, active, onLeftPress, onRightPress }: Props) {
+  const { width } = useWindowDimensions();
+
+  // Height scaling: smaller on very wide screens
+  const BASE_HEIGHT = 50; // mobile default
+  const MAX_DESKTOP_HEIGHT = 50; // keep same or slightly smaller if desired
+  const BUTTON_HEIGHT = Math.min(BASE_HEIGHT, MAX_DESKTOP_HEIGHT); // caps height
+  const BORDER_RADIUS = BUTTON_HEIGHT / 2;
+
+  return (
+    <View style={[styles.container, { height: BUTTON_HEIGHT, borderRadius: BORDER_RADIUS }]}>
+      <Pressable
+        style={[
+          styles.half,
+          { 
+            backgroundColor: active === 'left' ? 'gold' : 'silver', 
+            borderTopLeftRadius: BORDER_RADIUS, 
+            borderBottomLeftRadius: BORDER_RADIUS 
+          },
+        ]}
+        onPress={onLeftPress}
+      >
+        <Text style={styles.label}>{leftLabel}</Text>
+      </Pressable>
+
+      <Pressable
+        style={[
+          styles.half,
+          { 
+            backgroundColor: active === 'right' ? 'gold' : 'silver', 
+            borderTopRightRadius: BORDER_RADIUS, 
+            borderBottomRightRadius: BORDER_RADIUS 
+          },
+        ]}
+        onPress={onRightPress}
+      >
+        <Text style={styles.label}>{rightLabel}</Text>
+      </Pressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    dualButtonContainer: {
-        flexDirection: 'row',
-        width: '100%',
-        height: '100%',
-        padding: '10%',
-        justifyContent: 'center',
-    },
-
-    leftButton: {
-        borderTopLeftRadius: 50,
-        borderBottomLeftRadius: 50,
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        backgroundColor: 'gold',
-    },
-
-    rightButton: {
-        borderTopRightRadius: 50,
-        borderBottomRightRadius: 50,
-        width: '100%',
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        backgroundColor: 'silver',
-    },
-
-    buttonLabel: {
-        color: 'black',
-        fontSize: 18,
-    },
+  container: {
+    flexDirection: 'row',
+    overflow: 'hidden',
+    width: '100%',
+    maxWidth: 400, // prevent stretching on desktop
+    alignSelf: 'center',
+  },
+  half: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  label: {
+    fontSize: moderateScale(16),
+    fontWeight: '600',
+    textAlign: 'center',
+    color: 'black',
+  },
 });
