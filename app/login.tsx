@@ -1,9 +1,9 @@
-import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { useRouter } from "expo-router";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 
-import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import DualButton from "@/components/ui/DualButton";
+import Input from "@/components/ui/Input";
 import { Image } from "expo-image";
 
 const PlaceholderImage = require('@/assets/images/AI-logo.png');

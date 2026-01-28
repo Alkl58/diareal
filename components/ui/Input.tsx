@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 import { moderateScale } from "react-native-size-matters";
 
 type Probs = {
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: '100%',
         height: '100%',
+        padding: 10,
         fontSize: moderateScale(14),
     },
 

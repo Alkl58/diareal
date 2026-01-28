@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet, useWindowDimensions } from "react-native";
+import { Pressable, StyleSheet, Text, useWindowDimensions, View } from "react-native";
 import { moderateScale } from "react-native-size-matters";
 
 type Props = {
@@ -24,7 +24,7 @@ export default function DualButton({ leftLabel, rightLabel, active, onLeftPress,
         style={[
           styles.half,
           { 
-            backgroundColor: active === 'left' ? 'gold' : 'silver', 
+            backgroundColor: active === 'left' ? '#6A4FB6' : '#6a4fb681', 
             borderTopLeftRadius: BORDER_RADIUS, 
             borderBottomLeftRadius: BORDER_RADIUS 
           },
@@ -38,7 +38,7 @@ export default function DualButton({ leftLabel, rightLabel, active, onLeftPress,
         style={[
           styles.half,
           { 
-            backgroundColor: active === 'right' ? 'gold' : 'silver', 
+            backgroundColor: active === 'right' ? '#6A4FB6' : '#6a4fb681', 
             borderTopRightRadius: BORDER_RADIUS, 
             borderBottomRightRadius: BORDER_RADIUS 
           },
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(16),
     fontWeight: '600',
     textAlign: 'center',
-    color: 'black',
+    color: 'white',
   },
 });

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "react-native-size-matters";
 
 type Probs = {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        backgroundColor: 'gold',
+        backgroundColor: "#6A4FB6",
     },
 
     buttonIcon: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
 
     buttonLabel: {
-        color: 'black',
+        color: 'white',
         fontSize: moderateScale(14),
     },
 });
