@@ -34,7 +34,7 @@ export default function Login() {
 
                 <Input label="Password" theme="password"></Input>
 
-                <Button label="Login" onPress={() => router.push("/")}/>
+                <Button label="Login" onPress={() => router.push("/home")}/>
             </View>
         </View>
     );

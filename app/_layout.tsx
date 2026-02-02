@@ -22,6 +22,8 @@ export default function RootLayout() {
         <Stack.Screen name="photo" options={{ headerShown: false }} />
         <Stack.Screen name="addEntry" options={{ headerShown: false }} />
         <Stack.Screen name="register" options={{ headerShown: false }} />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="firstStart" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
       <StatusBar style="auto" />

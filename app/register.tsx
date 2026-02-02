@@ -1,10 +1,10 @@
-import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 
-import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import DualButton from "@/components/ui/DualButton";
+import Input from "@/components/ui/Input";
 
 const PlaceholderImage = require('@/assets/images/AI-logo.png');
 
@@ -36,7 +36,7 @@ export default function Login() {
 
                 <Input label="PIN" placeholderMessage="Choose your PIN (optional)"/>
 
-                <Button label="Register" onPress={() => router.push("/")} />
+                <Button label="Register" onPress={() => router.push("/login")} />
             </View>
         </View>
     );

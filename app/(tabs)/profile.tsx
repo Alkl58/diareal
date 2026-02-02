@@ -15,9 +15,9 @@ export default function ProfileScreen() {
   return (
     <View style={styles.container}>
       {/* Back Button */}
-      <TouchableOpacity style={styles.backButton}>
+      {/* <TouchableOpacity style={styles.backButton}>
         <Ionicons name="arrow-back" size={24} color="#fff" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       {/* Settings Button */}
       <TouchableOpacity

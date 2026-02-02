@@ -1,13 +1,13 @@
-import { View, StyleSheet, useWindowDimensions } from "react-native";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
+import { StyleSheet, useWindowDimensions, View } from "react-native";
 
-import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
 const PlaceholderImage = require('@/assets/images/AI-logo.png');
 
-export default function Login() {
+export default function FirstStart() {
     const router = useRouter();
     const { width, height } = useWindowDimensions();
     const isLandscape = width > height;
@@ -25,7 +25,7 @@ export default function Login() {
 
                 <Input label="Verification Code" />
 
-                <Button label="Continue" onPress={() => router.push("/")} />
+                <Button label="Continue" onPress={() => router.push("/register")} />
             </View>
         </View>
     );
