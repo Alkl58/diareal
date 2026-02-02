@@ -1,4 +1,5 @@
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React from "react";
 import {
   Image,
@@ -37,6 +38,8 @@ const entries = [
 ];
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -65,6 +68,11 @@ export default function HomeScreen() {
                 <Text style={styles.entryDate}>{entry.date}</Text>
                 <Text style={styles.entryVisibility}>{entry.visibility}</Text>
               </View>
+
+              {/* Edit */}
+              <TouchableOpacity style={styles.editButton}>
+                <Feather name="edit" size={18} color="#6A4FB6" />
+              </TouchableOpacity>
             </View>
             <Image source={{ uri: entry.image }} style={styles.entryImage} />
 
@@ -219,5 +227,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#EDE0FF",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  editButton: {
+    flexDirection: 'row',
+    marginLeft: 'auto',
+    gap: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
