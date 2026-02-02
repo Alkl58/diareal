@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { useRouter } from "expo-router";
 import React from "react";
 import {
@@ -35,11 +36,19 @@ export default function SettingsScreen() {
         </View>
       </View>
 
-      {/* Delete Account */}
-      <TouchableOpacity style={styles.deleteButton}>
-        <Ionicons name="trash-outline" size={20} color="#C0392B" />
-        <Text style={styles.deleteText}>Delete Account</Text>
-      </TouchableOpacity>
+      <View style={styles.bottomSection}>
+        {/* Logout */}
+        <TouchableOpacity style={styles.deleteButton} onPress={() => router.push('/login')}>
+          <MaterialIcons name="logout" size={20} color="#C0392B" />
+          <Text style={styles.deleteText}>Logout</Text>
+        </TouchableOpacity>
+
+        {/* Delete Account */}
+        <TouchableOpacity style={styles.deleteButton}>
+          <Ionicons name="trash-outline" size={20} color="#C0392B" />
+          <Text style={styles.deleteText}>Delete Account</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -95,9 +104,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 
-  deleteButton: {
+  bottomSection: {
     marginTop: "auto",
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+
+  deleteButton: {
+    marginBottom: 10,
     alignSelf: "center",
     flexDirection: "row",
     alignItems: "center",

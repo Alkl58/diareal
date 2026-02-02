@@ -14,11 +14,6 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Back Button */}
-      {/* <TouchableOpacity style={styles.backButton}>
-        <Ionicons name="arrow-back" size={24} color="#fff" />
-      </TouchableOpacity> */}
-
       {/* Settings Button */}
       <TouchableOpacity
         style={styles.settingsButton}
@@ -72,18 +67,6 @@ const styles = StyleSheet.create({
     paddingTop: 60,
   },
 
-  backButton: {
-    position: "absolute",
-    top: 60,
-    left: 20,
-    backgroundColor: "#6A4FB6",
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   settingsButton: {
     position: "absolute",
     top: 60,
@@ -94,6 +77,7 @@ const styles = StyleSheet.create({
     height: 44,
     borderRadius: 20,
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
     gap: 6,
   },
