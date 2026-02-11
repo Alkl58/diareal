@@ -21,7 +21,7 @@ export default function AddEntryScreen() {
   const handleSave = () => {
     console.log("Saving entry:", { photo: params.photo, mood, text });
     // Save entry logic here
-    router.push("/(tabs)");
+    router.push("/(tabs)/home");
   };
 
   return (

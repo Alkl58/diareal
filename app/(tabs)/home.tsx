@@ -71,7 +71,7 @@ export default function HomeScreen() {
 
               {/* Edit */}
               <TouchableOpacity style={styles.editButton}>
-                <Feather name="edit" size={18} color="#6A4FB6" />
+                <Feather name="edit" size={18} color="#6A4FB6" onPress={() => alert('Edit entry')}/>
               </TouchableOpacity>
             </View>
             <Image source={{ uri: entry.image }} style={styles.entryImage} />
